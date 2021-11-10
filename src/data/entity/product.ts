@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 import { Cart } from './cart';
 import { Category } from './category';
 import { Image } from './image';
-import { Option } from './option';
+import { Options } from './options';
 import { Status } from './status';
 
 @Entity()
@@ -20,7 +20,7 @@ export class Product {
     SKU: number;
 
     @Column()
-    release_price: number;
+    releasePrice: number;
 
     @Column()
     quantity: number;
@@ -37,8 +37,8 @@ export class Product {
     @OneToMany(() => Cart, cart => cart.product)
     cart: Cart[];
 
-    @OneToMany(() => Option, option => option.product)
-    option: Option[];
+    @OneToMany(() => Options, option => option.product)
+    option: Options[];
 
     @CreateDateColumn()
     createdAt: Date;
