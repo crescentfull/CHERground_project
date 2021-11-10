@@ -5,7 +5,6 @@ import { Product } from '../entity/product';
 import { Status } from '../entity/status';
 import { Image } from '../entity/image';
 import { Cart } from '../entity/cart';
-import { ProductCategory } from '../entity/product_category';
 import { Keyword } from '../entity/keyword';
 import { Option } from '../entity/option'
 
@@ -19,7 +18,7 @@ export const connection: Promise<Connection> = createConnection({
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: "cherground",
-    entities: [User, Category, Product, Status, Image, Cart, ProductCategory, Option, Keyword],
+    entities: [User, Category, Product, Status, Image, Cart, Option, Keyword],
     logging: true,
     synchronize: true
 })
