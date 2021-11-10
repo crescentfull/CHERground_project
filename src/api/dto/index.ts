@@ -1,4 +1,4 @@
-import { Category } from "../../data/entity/category";
+import { Options } from "src/data/entity/options";
 import { Product } from "../../data/entity/product";
 import { Status } from "../../data/entity/status";
 import { User } from "../../data/entity/user";
@@ -14,7 +14,7 @@ export class ProductDto {
     name: string;
     description: string;
     SKU: number;
-    release_price: number;
+    releasePrice: number;
     quantity: number;
     status: Status;
 }
@@ -41,4 +41,16 @@ export class CartDto {
     quantity: number;
     user: User;
     product: Product;
+}
+
+export class OptionDto {
+    id: number;
+    name: string;
+    product: Product;
+}
+
+export class KeywordDto {
+    id: number;
+    name: string;
+    option: Options;
 }

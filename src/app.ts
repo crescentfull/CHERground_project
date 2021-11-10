@@ -8,7 +8,7 @@ const cors = require('cors')
 
 export default class App {
     public server: express.Application;
-
+    
     constructor() {
         this.server = express.default();
         this.server.use(express.json());
