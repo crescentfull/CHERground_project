@@ -1,9 +1,11 @@
 import * as express from 'express';
+
 import { inject } from 'inversify';
 import container from '../../injector';
 
 import { UserDto } from '../dto';
 import { UserService } from 'src/service';
+
 
 class UserController {
     public router = express.Router();
