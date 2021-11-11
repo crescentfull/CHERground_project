@@ -53,4 +53,4 @@ class ProductController {
     }
 }
 
-export const productContoller = new ProductController(container.get("ProductService")).router;
+export const productController = new ProductController(container.get("ProductService")).router;

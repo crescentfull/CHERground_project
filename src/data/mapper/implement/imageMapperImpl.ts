@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
-import { ImageMapper } from "../modelMapper";
-import { ImageDto } from "../../../api/dto/index";
-import { Image } from "src/data/entity/image";
+import { ImageMapper} from "../modelMapper";
+import { ImageDto } from "../../../api/dto";
+import { Image } from "../../entity/image";
 
 @injectable()
 export default class ImageMapperImpl implements ImageMapper {
@@ -21,7 +21,8 @@ export default class ImageMapperImpl implements ImageMapper {
         entity.id = dto.id;
         entity.product = dto.product;
         entity.imageUrl = dto.imageUrl;
-        
+
         return entity;
     }
+
 }
