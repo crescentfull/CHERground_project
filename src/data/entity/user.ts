@@ -1,3 +1,5 @@
+import * as crypto from 'crypto'
+
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { Cart } from './cart';
 
