@@ -18,6 +18,7 @@ export default class UserMapperImpl implements UserMapper {
     revert(dto: UserDto): User {
         let entity = new User();
 
+        entity.id = dto.id;
         entity.email = dto.email;
         entity.password = dto.password;
 

@@ -10,7 +10,6 @@ export default class UserRepositoryImpl implements UserRepository {
     async findById(id:string): Promise<User> {
         const userRepo = (await connection).getRepository(User);
         let user = await userRepo.findOne({where: {id:id}})
-
         if (user) {
             return user;
         } else {
