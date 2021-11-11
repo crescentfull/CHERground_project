@@ -13,7 +13,7 @@ export default class ImageRepositoryImpl implements ImageRepository {
         if(image) {
             return image;
         } else {
-            throw ImageError.UNEXISTING_IMGAE;
+            throw ImageError.UNEXISTING_IMAGE;
         }
     }
 
