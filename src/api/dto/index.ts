@@ -16,41 +16,41 @@ export class ProductDto {
     SKU: number;
     releasePrice: number;
     quantity: number;
-    status: Status;
+    status: Status[];
 }
 
 export class ImageDto {
     id: number;
     imageUrl: string;
-    product: Product;
+    product: Product[];
 }
 
 export class CategoryDto {
     id: number;
     name: string;
-    product: Product;
+    product: Product[];
 }
 
 export class StatusDto {
     id: number;
-    name: string;
+    name: boolean;
 }
 
 export class CartDto {
     id: number;
     quantity: number;
-    user: User;
-    product: Product;
+    user: User[];
+    product: Product[];
 }
 
 export class OptionDto {
     id: number;
     name: string;
-    product: Product;
+    product: Product[];
 }
 
 export class KeywordDto {
     id: number;
     name: string;
-    option: Options;
+    option: Options[];
 }
