@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import { CartMapper } from "../modelMapper";
 import { CartDto } from "../../../api/dto/index";
-import { Cart } from "src/data/entity/cart";
+import { Cart } from "../../entity/cart";
 
 @injectable()
 export default class CartMapperImpl implements CartMapper {
