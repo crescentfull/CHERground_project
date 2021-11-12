@@ -7,8 +7,8 @@ export class Keyword {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Options, option => option.keyword)
-    option: Options[];
+    @ManyToOne(() => Options, options => options.keyword)
+    options: Options[];
 
     @Column()
     name: string;

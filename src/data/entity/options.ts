@@ -7,10 +7,10 @@ export class Options {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Product, product => product.option )
+    @ManyToOne(() => Product, product => product.options )
     product: Product[];
 
-    @OneToMany(() => Keyword, keyword => keyword.option)
+    @OneToMany(() => Keyword, keyword => keyword.options)
     keyword: Keyword[];
 
     @Column()

@@ -6,7 +6,9 @@ export interface UserService {
 }
 
 export interface ProductService {
+    getAllProduct(): Promise<ProductDto[]>;
     getProduct(id: string): Promise<ProductDto>;
+    getSearchProduct(search: string): Promise<ProductDto[]>;
     saveProduct(product: ProductDto): Promise<string>;
     updateProduct(product: ProductDto): Promise<string>;
     deleteProduct(id: string): Promise<string>

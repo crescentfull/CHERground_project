@@ -19,7 +19,6 @@ export default class CategoryMapperImpl implements CategoryMapper {
         let entity = new Category();
 
         entity.id = dto.id;
-        entity.product = dto.product;
         entity.name = dto.name;
         entity.product = dto.product;
         

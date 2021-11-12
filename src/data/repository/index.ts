@@ -13,7 +13,9 @@ export interface UserRepository {
 }
 
 export interface ProductRepository {
+    getAllProduct(): Promise<Product[]>
     getProduct(id: string): Promise<Product>;
+    getSearchProduct(search: string): Promise<Product[]>;
     saveProduct(product: Product): Promise<void>;
     updateProduct(product: Product): Promise<void>;
     deleteProduct(id: string): Promise<void>;

@@ -11,7 +11,7 @@ export default class OptionsMapperImpl implements OptionsMapper {
         dto.id = entity.id;
         dto.name = entity.name;
         dto.product = entity.product;
-
+        dto.keyword = entity.keyword;
         return dto;
     }
 
@@ -21,7 +21,7 @@ export default class OptionsMapperImpl implements OptionsMapper {
         entity.id = dto.id;
         entity.name = dto.name;
         entity.product = dto.product;
-        
+        entity.keyword = dto.keyword;
         return entity;
     }
 }

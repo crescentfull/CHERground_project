@@ -10,5 +10,5 @@ export class Status {
     name: boolean;
 
     @OneToMany(() => Product, product => product.status)
-    product: Product;
+    product: Product[];
 }

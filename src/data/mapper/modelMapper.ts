@@ -14,7 +14,6 @@ interface BaseMapper<entity, dto> {
 }
 
 export interface UserMapper extends BaseMapper<User, UserDto> {}
-
 export interface ProductMapper extends BaseMapper<Product, ProductDto> {}
 export interface ImageMapper extends BaseMapper<Image, ImageDto> {}
 export interface CartMapper extends BaseMapper<Cart, CartDto> {}
