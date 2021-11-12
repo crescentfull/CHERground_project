@@ -5,7 +5,6 @@ import { productController } from './api/controller/productController';
 import { imageController } from './api/controller/imageController';
 import { requestLogger, errorHandler } from './middleware';
 import 'cors'
-import { cartController } from './api/controller/cartController';
 
 
 const cors = require('cors')
@@ -21,7 +20,6 @@ export default class App {
         this.server.use('/user', userController);
         this.server.use('/product', productController);
         this.server.use('/image', imageController);
-        this.server.use('/cart', cartController);
         this.server.use(cors({
             origin: '*'
         }))

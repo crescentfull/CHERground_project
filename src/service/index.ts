@@ -1,5 +1,4 @@
-import { ProductDto, ImageDto, UserDto, CartDto } from "src/api/dto";
-import { Cart } from "src/data/entity/cart";
+import { ProductDto, ImageDto, UserDto } from "src/api/dto";
 
 export interface UserService {
     getUserById(id: string): Promise<UserDto>;
@@ -18,11 +17,4 @@ export interface ImageService {
     updateImage(image: ImageDto): Promise<string>;
     deleteImage(id: string): Promise<string>;
     
-}
-
-export interface CartService {
-    getCart(id: string): Promise<CartDto>;
-    saveCart(cart: CartDto): Promise<string>;
-    updateCart(cart: CartDto): Promise<string>;
-    deleteCart(id: string): Promise<string>;
 }

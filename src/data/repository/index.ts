@@ -1,4 +1,3 @@
-import { Cart } from '../entity/cart';
 import { Image } from '../entity/image';
 import { Product } from '../entity/product';
 import { User } from '../entity/user';
@@ -19,11 +18,4 @@ export interface ImageRepository {
     saveImage(image: Image): Promise<void>
     updateImage(image: Image): Promise<void>
     deleteImage(id: string): Promise<void>
-}
-
-export interface CartRepository {
-    getCart(id: string): Promise<Cart>;
-    saveCart(cart: Cart): Promise<void>;
-    updateCart(cart: Cart): Promise<void>;
-    deleteCart(id: string): Promise<void>;
 }
