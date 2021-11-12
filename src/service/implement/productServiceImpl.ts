@@ -41,6 +41,6 @@ export default class ProductServiceImpl implements ProductService {
 
     async deleteProduct(id: string): Promise<string> {
         await this.productRepository.deleteProduct(id)
-        return "successfully deleted"
+        return "successfully deleted";
     }
 }
