@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import { StatusMapper } from "../modelMapper";
 import { StatusDto } from "../../../api/dto/index";
-import { Status } from "src/data/entity/status";
+import { Status } from "../../entity/status";
 
 @injectable()
 export default class StatusMapperImpl implements StatusMapper {

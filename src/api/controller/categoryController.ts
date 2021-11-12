@@ -2,42 +2,42 @@ import * as express from 'express';
 
 import { inject } from 'inversify'
 import container from '../../injector';
-import { ImageService } from '../../service';
-import { ImageDto } from '../dto';
+import { CategoryService } from 'src/service';
+import { CategoryDto } from '../dto';
 
-class ImageController {
+class CategoryController {
     public router = express.Router();
-    private imageService: ImageService;
+    private categoryService: CategoryService;
 
     constructor(
-        @inject("ImageService") imageService: ImageService
+        @inject("CategoryService") categoryService: CategoryService
     ) {
-        this.imageService = imageService
+        this.categoryService = categoryService
 
         this.router.get('/:id', (req: express.Request, res: express.Response, next) => {
-            this.imageService.getImage(req.params.id)
-            .then(image => {
-                res.status(200).send(image);
+            this.categoryService.getCategory(req.params.id)
+            .then(category => {
+                res.status(200).send(category);
             }).catch(err => {
                 next(err);
             })
         })
 
         this.router.post('', (req: express.Request, res: express.Response, next) => {
-            let image: ImageDto = req.body;
+            let category: CategoryDto = req.body;
 
-            this.imageService.saveImage(image)
-            .then(image => {
+            this.categoryService.saveCategory(category)
+            .then(category => {
                 res.status(200).send({"MESSAGE" : "SUCCESS"});
             }).catch(err => {
                 next(err);
             });
         
         this.router.patch('/:id', (req: express.Request, res: express.Response, next) => {
-            let image: ImageDto = req.body;
+            let category: CategoryDto = req.body;category
 
-            this.imageService.updateImage(image)
-            .then(image => {
+            this.categoryService.updateCategory(category)
+            .then(category => {
                 res.status(200).send({"MESSAGE" : "SUCCESS"})
             })
 
@@ -45,8 +45,8 @@ class ImageController {
 
 
         this.router.delete('', (req: express.Request, res: express.Response, next) => {
-            this.imageService.deleteImage(req.params.id)
-            .then(image => {
+            this.categoryService.deleteCategory(req.params.id)
+            .then(category => {
                 res.status(200).send({"MESSAGE" : "SUCCESS"})
             }).catch(err => {
                 next(err);
@@ -57,4 +57,4 @@ class ImageController {
     }
 }
 
-export const imageController = new ImageController(container.get("ImageService")).router;
+export const categoryController = new CategoryController(container.get("CategoryService")).router;

@@ -1,43 +1,43 @@
 import * as express from 'express';
 
 import { inject } from 'inversify'
-import container from '../../injector';
-import { ImageService } from '../../service';
-import { ImageDto } from '../dto';
+import container from '../../../src/injector';
+import { StatusService } from '../../../src/service';
+import { StatusDto } from '../dto';
 
-class ImageController {
+class StatusController {
     public router = express.Router();
-    private imageService: ImageService;
+    private statusService: StatusService;
 
     constructor(
-        @inject("ImageService") imageService: ImageService
+        @inject("StatusService") statusService: StatusService
     ) {
-        this.imageService = imageService
+        this.statusService = statusService
 
         this.router.get('/:id', (req: express.Request, res: express.Response, next) => {
-            this.imageService.getImage(req.params.id)
-            .then(image => {
-                res.status(200).send(image);
+            this.statusService.getStatus(req.params.id)
+            .then(status => {
+                res.status(200).send(status);
             }).catch(err => {
                 next(err);
             })
         })
 
         this.router.post('', (req: express.Request, res: express.Response, next) => {
-            let image: ImageDto = req.body;
+            let status: StatusDto = req.body;
 
-            this.imageService.saveImage(image)
-            .then(image => {
+            this.statusService.saveStatus(status)
+            .then(status => {
                 res.status(200).send({"MESSAGE" : "SUCCESS"});
             }).catch(err => {
                 next(err);
             });
         
         this.router.patch('/:id', (req: express.Request, res: express.Response, next) => {
-            let image: ImageDto = req.body;
+            let status: StatusDto = req.body;
 
-            this.imageService.updateImage(image)
-            .then(image => {
+            this.statusService.updateStatus(status)
+            .then(status => {
                 res.status(200).send({"MESSAGE" : "SUCCESS"})
             })
 
@@ -45,8 +45,8 @@ class ImageController {
 
 
         this.router.delete('', (req: express.Request, res: express.Response, next) => {
-            this.imageService.deleteImage(req.params.id)
-            .then(image => {
+            this.statusService.deleteStatus(req.params.id)
+            .then(status => {
                 res.status(200).send({"MESSAGE" : "SUCCESS"})
             }).catch(err => {
                 next(err);
@@ -57,4 +57,4 @@ class ImageController {
     }
 }
 
-export const imageController = new ImageController(container.get("ImageService")).router;
+export const statusController = new StatusController(container.get("StatusService")).router;

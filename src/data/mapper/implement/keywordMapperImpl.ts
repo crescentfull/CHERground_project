@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import { KeywordMapper } from "../modelMapper";
 import { KeywordDto } from "../../../api/dto/index";
-import { Keyword } from "src/data/entity/keyword";
+import { Keyword } from "../../entity/keyword";
 
 @injectable()
 export default class KeywordMapperImpl implements KeywordMapper {

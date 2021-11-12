@@ -19,12 +19,12 @@ export default class ImageRepositoryImpl implements ImageRepository {
 
     async updateImage(image: Image): Promise<void> {
         const imageRepo = (await connection).getRepository(Image);
-        imageRepo.save(image)
+        imageRepo.save(image);
     }
 
     async saveImage(image: Image): Promise<void> {
         const imageRepo = (await connection).getRepository(Image);
-        imageRepo.save(image)
+        imageRepo.save(image);
     }
 
     async deleteImage(id: string): Promise<void> {

@@ -1,43 +1,43 @@
 import * as express from 'express';
 
 import { inject } from 'inversify'
-import container from '../../injector';
-import { ImageService } from '../../service';
-import { ImageDto } from '../dto';
+import container from '../../../src/injector';
+import { OptionsService } from '../../../src/service';
+import { OptionsDto } from '../dto';
 
-class ImageController {
+class OptionsController {
     public router = express.Router();
-    private imageService: ImageService;
+    private optionsService: OptionsService;
 
     constructor(
-        @inject("ImageService") imageService: ImageService
+        @inject("OptionsService") optionsService: OptionsService
     ) {
-        this.imageService = imageService
+        this.optionsService = optionsService
 
         this.router.get('/:id', (req: express.Request, res: express.Response, next) => {
-            this.imageService.getImage(req.params.id)
-            .then(image => {
-                res.status(200).send(image);
+            this.optionsService.getOptions(req.params.id)
+            .then(options => {
+                res.status(200).send(options);
             }).catch(err => {
                 next(err);
             })
         })
 
         this.router.post('', (req: express.Request, res: express.Response, next) => {
-            let image: ImageDto = req.body;
+            let options: OptionsDto = req.body;
 
-            this.imageService.saveImage(image)
-            .then(image => {
+            this.optionsService.saveOptions(options)
+            .then(options => {
                 res.status(200).send({"MESSAGE" : "SUCCESS"});
             }).catch(err => {
                 next(err);
             });
         
         this.router.patch('/:id', (req: express.Request, res: express.Response, next) => {
-            let image: ImageDto = req.body;
+            let options: OptionsDto = req.body;
 
-            this.imageService.updateImage(image)
-            .then(image => {
+            this.optionsService.updateOptions(options)
+            .then(options => {
                 res.status(200).send({"MESSAGE" : "SUCCESS"})
             })
 
@@ -45,8 +45,8 @@ class ImageController {
 
 
         this.router.delete('', (req: express.Request, res: express.Response, next) => {
-            this.imageService.deleteImage(req.params.id)
-            .then(image => {
+            this.optionsService.deleteOptions(req.params.id)
+            .then(options => {
                 res.status(200).send({"MESSAGE" : "SUCCESS"})
             }).catch(err => {
                 next(err);
@@ -57,4 +57,4 @@ class ImageController {
     }
 }
 
-export const imageController = new ImageController(container.get("ImageService")).router;
+export const optionsController = new OptionsController(container.get("OptionsService")).router;
