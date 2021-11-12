@@ -1,4 +1,4 @@
-import { ProductDto, ImageDto, UserDto, CartDto } from "src/api/dto";
+import { ProductDto, ImageDto, UserDto, CategoryDto, OptionsDto, KeywordDto, StatusDto, CartDto } from "src/api/dto";
 
 export interface UserService {
     getUserById(id: string): Promise<UserDto>;
@@ -23,6 +23,33 @@ export interface CartService {
     getCart(id: string): Promise<CartDto>;
     saveCart(cart: CartDto): Promise<string>;
     updateCart(cart: CartDto): Promise<string>;
-    deleteCart(id: string): Promise<string>;
-    
+    deleteCart(id: string): Promise<string>;   
+}
+
+export interface CategoryService {
+    getCategory(id: string): Promise<CategoryDto>;
+    saveCategory(category: CategoryDto): Promise<string>;
+    updateCategory(category: CategoryDto): Promise<string>;
+    deleteCategory(id: string): Promise<string>; 
+}
+
+export interface OptionsService {
+    getOptions(id: string): Promise<OptionsDto>;
+    saveOptions(Options: OptionsDto): Promise<string>;
+    updateOptions(Options: OptionsDto): Promise<string>;
+    deleteOptions(id: string): Promise<string>; 
+}
+
+export interface KeywordService {
+    getKeyword(id: string): Promise<KeywordDto>;
+    saveKeyword(keyword: KeywordDto): Promise<string>;
+    updateKeyword(keyword: KeywordDto): Promise<string>;
+    deleteKeyword(id: string): Promise<string>; 
+}
+
+export interface StatusService {
+    getStatus(id: string): Promise<StatusDto>;
+    saveStatus(status: StatusDto): Promise<string>;
+    updateStatus(status: StatusDto): Promise<string>;
+    deleteStatus(id: string): Promise<string>; 
 }

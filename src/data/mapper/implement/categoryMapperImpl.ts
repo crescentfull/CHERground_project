@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import { CategoryMapper } from "../modelMapper";
 import { CategoryDto } from "../../../api/dto/index";
-import { Category } from "src/data/entity/category";
+import { Category } from "../../entity/category";
 
 @injectable()
 export default class CategoryMapperImpl implements CategoryMapper {

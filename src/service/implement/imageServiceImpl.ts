@@ -19,8 +19,8 @@ export default class ImageServiceImpl implements ImageService {
 
     async getImage(id: string): Promise<ImageDto> {
         try {
-            let product = await this.imageRepository.getImage(id);
-            return this.imageMapper.convert(product);
+            let image = await this.imageRepository.getImage(id);
+            return this.imageMapper.convert(image);
         } catch (err) {
             throw err;
         }
@@ -28,13 +28,13 @@ export default class ImageServiceImpl implements ImageService {
 
     async saveImage(image: ImageDto): Promise<string> {
         let imageInfo = this.imageMapper.revert(image);
-        await this.imageRepository.saveImage(image)
+        await this.imageRepository.saveImage(imageInfo)
         return "successfully saved";
     }
 
     async updateImage(image: ImageDto): Promise<string> {
         let imageInfo = this.imageMapper.revert(image);
-        await this.imageRepository.updateImage(image)
+        await this.imageRepository.updateImage(imageInfo)
         return "successfully updated";
     }
 

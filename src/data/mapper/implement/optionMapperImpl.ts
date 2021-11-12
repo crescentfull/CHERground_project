@@ -1,12 +1,12 @@
 import { injectable } from "inversify";
-import { OptionMapper } from "../modelMapper";
-import { OptionDto } from "../../../api/dto/index";
-import { Options } from "src/data/entity/options";
+import { OptionsMapper } from "../modelMapper";
+import { OptionsDto } from "../../../api/dto/index";
+import { Options } from "../../entity/options";
 
 @injectable()
-export default class OptionMapperImpl implements OptionMapper {
-    convert (entity: Options): OptionDto {
-        let dto = new OptionDto();
+export default class OptionsMapperImpl implements OptionsMapper {
+    convert (entity: Options): OptionsDto {
+        let dto = new OptionsDto();
 
         dto.id = entity.id;
         dto.name = entity.name;
@@ -15,7 +15,7 @@ export default class OptionMapperImpl implements OptionMapper {
         return dto;
     }
 
-    revert(dto: OptionDto): Options {
+    revert(dto: OptionsDto): Options {
         let entity = new Options();
 
         entity.id = dto.id;

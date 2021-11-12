@@ -1,3 +1,4 @@
+import { Keyword } from "src/data/entity/keyword";
 import { Options } from "src/data/entity/options";
 import { Product } from "../../data/entity/product";
 import { Status } from "../../data/entity/status";
@@ -43,9 +44,10 @@ export class CartDto {
     product: Product[];
 }
 
-export class OptionDto {
+export class OptionsDto {
     id: number;
     name: string;
+    keyword: Keyword[];
     product: Product[];
 }
 
