@@ -1,3 +1,6 @@
+import { Cart } from "src/data/entity/cart";
+import { Category } from "src/data/entity/category";
+import { Image } from "src/data/entity/image";
 import { Keyword } from "src/data/entity/keyword";
 import { Options } from "src/data/entity/options";
 import { Product } from "../../data/entity/product";
@@ -18,6 +21,10 @@ export class ProductDto {
     releasePrice: number;
     quantity: number;
     status: Status[];
+    image: Image[];
+    category: Category[];
+    cart: Cart[];
+    option: Options[];
 }
 
 export class ImageDto {
@@ -35,6 +42,7 @@ export class CategoryDto {
 export class StatusDto {
     id: number;
     name: boolean;
+    product: Product[];
 }
 
 export class CartDto {

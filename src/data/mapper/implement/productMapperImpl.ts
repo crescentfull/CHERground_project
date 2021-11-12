@@ -15,6 +15,10 @@ export default class ProductMapperImpl implements ProductMapper {
         dto.releasePrice = entity.releasePrice;
         dto.quantity = entity.quantity;
         dto.status = entity.status;
+        dto.image = entity.image;
+        dto.category = entity.category;
+        dto.cart = entity.cart;
+        dto.option = entity.option;
 
         return dto;
     }
@@ -29,7 +33,11 @@ export default class ProductMapperImpl implements ProductMapper {
         entity.releasePrice = dto.releasePrice;
         entity.quantity = dto.quantity;
         entity.status = dto.status;
-
+        entity.image = dto.image;
+        entity.category  = dto.category;
+        entity.cart = dto.cart;
+        entity.option = dto.option;
+        
         return entity;
     }
 }

@@ -9,7 +9,7 @@ import { Product } from "../../entity/product";
 export default class ProductRepositoryImpl implements ProductRepository {
     async getProduct(id: string): Promise<Product> {
         const productRepo = (await connection).getRepository(Product);
-        let product = await productRepo.findOne({id:Number(id)});
+        let product = await productRepo.findOne({id:Number(id)}, {relations:["image", "category", "status"]});
 
         if (product) {
             return product;
