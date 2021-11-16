@@ -6,11 +6,9 @@ export class Image {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Product, product => product.image)
+    @ManyToOne(() => Product, product => product.image, {onDelete: 'CASCADE'})
     @JoinColumn()
     product: Product;
-    // @Column()
-    // productId: string;
 
     @Column()
     imageUrl: string;

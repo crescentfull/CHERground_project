@@ -11,13 +11,14 @@ export default class ProductRepositoryImpl implements ProductRepository {
 
     async getAllProduct(): Promise<Product[]> {
         const productRepo = (await connection).getRepository(Product);
+        
         let products = await productRepo.find({
             join: {
                 alias: "product",
                 leftJoinAndSelect: {
                     image: "product.image"
-                },
-            },
+                }
+            }
         });
 
         return products;
@@ -25,15 +26,22 @@ export default class ProductRepositoryImpl implements ProductRepository {
 
     async getProduct(id: string): Promise<Product> {
         const productRepo = (await connection).getRepository(Product);
-        // let product = await productRepo.findOne({id:Number(id)}, {relations:["image", "category", "status", "options"]});
-        let product = await productRepo.createQueryBuilder("product")
-        .leftJoinAndSelect("product.image", "image")
-        .leftJoinAndSelect("product.category", "category")
-        .leftJoinAndSelect("product.status", "status")
-        .leftJoinAndSelect("product.options", "options")
-        .leftJoinAndSelect("options.keyword", "keyword")
-        .where("product.id = :id", {id: id})
-        .getOne();
+
+        let product = await productRepo.findOne({
+            where: {
+                id: Number(id)
+            },
+            join: {
+                alias: "product",
+                leftJoinAndSelect: {
+                    image: "product.image",
+                    category: "product.category",
+                    options: "product.options",
+                    keyword: "options.keyword",
+                    status: "product.status"
+                }
+            }
+        });
 
         if (product) {
             return product;
@@ -44,13 +52,18 @@ export default class ProductRepositoryImpl implements ProductRepository {
 
     async getSearchProduct(search: string): Promise<Product[]> {
         const productRepo = (await connection).getRepository(Product);
-        // let searchResult = await productRepo.find({name: Like(`%${search}%`)});
-        let searchResult = await productRepo.createQueryBuilder("product")
-        .innerJoinAndSelect("product.image", "image")
-        .where("product.name like :name", {
-            name: `%${search}%`
-        })
-        .getMany();
+
+        let searchResult = await productRepo.find({
+            where: {
+                name: Like(`%${search}%`)
+            },
+            join: {
+                alias: "product",
+                leftJoinAndSelect: {
+                    image: "product.image"
+                }
+            }
+        });
 
         if (searchResult) {
             return searchResult;

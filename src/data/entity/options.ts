@@ -7,7 +7,7 @@ export class Options {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Product, product => product.options )
+    @ManyToOne(() => Product, product => product.options, {onDelete: 'CASCADE'})
     product: Product[];
 
     @OneToMany(() => Keyword, keyword => keyword.options)
