@@ -7,7 +7,7 @@ export class Keyword {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Options, options => options.keyword)
+    @ManyToOne(() => Options, options => options.keyword, {onDelete: 'CASCADE'})
     options: Options[];
 
     @Column()

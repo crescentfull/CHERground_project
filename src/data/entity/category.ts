@@ -9,6 +9,6 @@ export class Category {
     @Column()
     name: string;
 
-    @ManyToOne(() => Product, product => product.category)
+    @ManyToOne(() => Product, product => product.category, {onDelete: 'CASCADE'})
     product: Product[];
 }

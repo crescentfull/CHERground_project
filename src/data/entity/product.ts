@@ -25,7 +25,7 @@ export class Product {
     @Column()
     quantity?: number;
 
-    @ManyToOne(() => Status, status => status.product)
+    @ManyToOne(() => Status, status => status.product, {onDelete: 'CASCADE'})
     status?: Status[];
 
     @OneToMany(() => Image, image => image.product)
