@@ -10,6 +10,7 @@ export default class StatusMapperImpl implements StatusMapper {
 
         dto.id = entity.id;
         dto.name = entity.name;
+        dto.product = entity.product;
 
         return dto;
     }
@@ -19,7 +20,8 @@ export default class StatusMapperImpl implements StatusMapper {
 
         entity.id = dto.id;
         entity.name = dto.name;
-        
+        entity.product = dto.product
+
         return entity;
     }
 }

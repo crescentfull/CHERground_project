@@ -10,7 +10,7 @@ export default class KeywordMapperImpl implements KeywordMapper {
 
         dto.id = entity.id;
         dto.name = entity.name;
-        dto.option = entity.option;
+        dto.options = entity.options;
 
         return dto;
     }
@@ -20,7 +20,7 @@ export default class KeywordMapperImpl implements KeywordMapper {
 
         entity.id = dto.id;
         entity.name = dto.name;
-        entity.option = dto.option;
+        entity.options = dto.options;
         
         return entity;
     }

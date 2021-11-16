@@ -11,38 +11,38 @@ export class Product {
     id: number;
  
     @Column()
-    name: string;
+    name?: string;
 
     @Column()
-    description: string;
+    description?: string;
 
     @Column()
-    SKU: number;
+    SKU?: number;
 
     @Column()
-    releasePrice: number;
+    releasePrice?: number;
 
     @Column()
-    quantity: number;
+    quantity?: number;
 
     @ManyToOne(() => Status, status => status.product)
-    status: Status[];
+    status?: Status[];
 
     @OneToMany(() => Image, image => image.product)
-    image: Image[];
+    image?: Image[];
 
     @OneToMany(() => Category, category => category.product)
-    category: Category[];
+    category?: Category[];
 
     @OneToMany(() => Cart, cart => cart.product)
-    cart: Cart[];
+    cart?: Cart[];
 
-    @OneToMany(() => Options, option => option.product)
-    option: Options[];
+    @OneToMany(() => Options, options => options.product)
+    options?: Options[];
 
     @CreateDateColumn()
-    createdAt: Date;
+    createdAt?: Date;
 
     @UpdateDateColumn()
-    updatedAt: Date;
+    updatedAt?: Date;
 }

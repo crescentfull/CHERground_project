@@ -18,6 +18,20 @@ export default class ProductServiceImpl implements ProductService {
         this.productMapper = productMapper;
     }
 
+    async getAllProduct(): Promise<ProductDto[]> {
+        try {
+            let products = await this.productRepository.getAllProduct();
+            let result = []
+            for (var product of products) {
+                let value = this.productMapper.convert(product);
+                result.push(value)
+            }
+            return result;
+        } catch (err) {
+            throw err;
+        }
+    }
+
     async getProduct(id: string): Promise<ProductDto> {
         try {
             let product = await this.productRepository.getProduct(id);
@@ -27,15 +41,33 @@ export default class ProductServiceImpl implements ProductService {
         }
     }
 
+    async getSearchProduct(search: string): Promise<ProductDto[]> {
+        try {
+            let products = await this.productRepository.getSearchProduct(search);
+            let result = []
+            for (var product of products) {
+                let value = this.productMapper.convert(product);
+                result.push(value)
+            }
+            return result;
+        } catch(err) {
+            throw err;
+        }
+    }
+
     async saveProduct(product: ProductDto): Promise<string> {
-        let productInfo = this.productMapper.revert(product);
-        await this.productRepository.saveProduct(productInfo)
-        return "successfully saved";
+        try {
+            let productInfo = this.productMapper.revert(product);
+            await this.productRepository.saveProduct(productInfo)
+            return "successfully saved";
+        } catch (err) {
+            throw err;
+        }
     }
 
     async updateProduct(product: ProductDto): Promise<string> {
         let productInfo = this.productMapper.revert(product);
-        await this.productRepository.saveProduct(productInfo)
+        await this.productRepository.updateProduct(productInfo);
         return "successfully updated";
     }
 

@@ -1,3 +1,6 @@
+import { Cart } from "src/data/entity/cart";
+import { Category } from "src/data/entity/category";
+import { Image } from "src/data/entity/image";
 import { Keyword } from "src/data/entity/keyword";
 import { Options } from "src/data/entity/options";
 import { Product } from "../../data/entity/product";
@@ -12,18 +15,22 @@ export class UserDto {
 
 export class ProductDto {
     id: number;
-    name: string;
-    description: string;
-    SKU: number;
-    releasePrice: number;
-    quantity: number;
-    status: Status[];
+    name?: string;
+    description?: string;
+    SKU?: number;
+    releasePrice?: number;
+    quantity?: number;
+    status?: Status[];
+    image?: Image[];
+    category?: Category[];
+    cart?: Cart[];
+    options?: Options[];
 }
 
 export class ImageDto {
     id: number;
     imageUrl: string;
-    product: Product[];
+    product: Product;
 }
 
 export class CategoryDto {
@@ -35,6 +42,7 @@ export class CategoryDto {
 export class StatusDto {
     id: number;
     name: boolean;
+    product: Product[];
 }
 
 export class CartDto {
@@ -54,5 +62,5 @@ export class OptionsDto {
 export class KeywordDto {
     id: number;
     name: string;
-    option: Options[];
+    options: Options[];
 }
