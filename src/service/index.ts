@@ -1,7 +1,9 @@
-import { ProductDto, ImageDto, UserDto, CategoryDto, OptionsDto, KeywordDto, StatusDto, CartDto } from "src/api/dto";
+import { ProductDto, ImageDto, UserDto, CategoryDto, OptionsDto, KeywordDto, StatusDto, CartDto, ProductCategoryDto } from "src/api/dto";
+import { User } from "src/data/entity/user";
 
 export interface UserService {
     getUserById(id: string): Promise<UserDto>;
+    getUser(user: UserDto): Promise<object | undefined>;
     saveUser(user: UserDto): Promise<UserDto>;
 }
 
@@ -9,7 +11,7 @@ export interface ProductService {
     getAllProduct(): Promise<ProductDto[]>;
     getProduct(id: string): Promise<ProductDto>;
     getSearchProduct(search: string): Promise<ProductDto[]>;
-    saveProduct(product: ProductDto): Promise<string>;
+    saveProduct(product: ProductDto, clearance: boolean): Promise<string | undefined>;
     updateProduct(product: ProductDto): Promise<string>;
     deleteProduct(id: string): Promise<string>
 }
@@ -22,17 +24,27 @@ export interface ImageService {
 }
 
 export interface CartService {
-    getCart(id: string): Promise<CartDto>;
-    saveCart(cart: CartDto): Promise<string>;
-    updateCart(cart: CartDto): Promise<string>;
+    getCart(id: string, userId: string): Promise<CartDto>;
+    getUserCart(user: string): Promise<CartDto[]>;
+    saveCart(cart: CartDto, userId: User): Promise<string>;
+    updateCart(quantity: CartDto): Promise<string>;
     deleteCart(id: string): Promise<string>;   
+    deleteOneCart(cartId: string): Promise<string>;
 }
 
 export interface CategoryService {
-    getCategory(id: string): Promise<CategoryDto>;
-    saveCategory(category: CategoryDto): Promise<string>;
+    getCategory(id: string, clearance:boolean): Promise<CategoryDto[] | string>;
+    getCategoryList(): Promise<CategoryDto[] | string>;
+    saveCategory(category: CategoryDto, clearance: boolean): Promise<object | string | undefined>;
     updateCategory(category: CategoryDto): Promise<string>;
-    deleteCategory(id: string): Promise<string>; 
+    deleteCategory(id: string): Promise<string>;
+}
+
+export interface ProductCategoryService {
+    getProductCategory(id: string): Promise<ProductCategoryDto>;
+    saveProductCategory(category: ProductCategoryDto[], clearance: boolean): Promise<void | string | undefined>;
+    updateProductCategory(category: ProductCategoryDto): Promise<string>;
+    deleteProductCategory(id: string, clearance: boolean): Promise<string>; 
 }
 
 export interface OptionsService {

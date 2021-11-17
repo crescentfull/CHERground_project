@@ -10,7 +10,7 @@ export default class CategoryMapperImpl implements CategoryMapper {
 
         dto.id = entity.id;
         dto.name = entity.name;
-        dto.product = entity.product;
+        dto.productCategory = entity.productCategory;
 
         return dto;
     }
@@ -20,7 +20,7 @@ export default class CategoryMapperImpl implements CategoryMapper {
 
         entity.id = dto.id;
         entity.name = dto.name;
-        entity.product = dto.product;
+        entity.productCategory = dto.productCategory;
         
         return entity;
     }

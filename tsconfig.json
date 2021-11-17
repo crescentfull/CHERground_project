@@ -12,7 +12,8 @@
    "forceConsistentCasingInFileNames": true,
    "strictPropertyInitialization": false,
    "emitDecoratorMetadata": true,
-   "experimentalDecorators": true
+   "experimentalDecorators": true,
+   "typeRoots": ["./node_modules/@types","./middleware/index"],
   },
   "include":[
    "src/**/**/*"

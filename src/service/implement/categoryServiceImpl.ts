@@ -18,19 +18,44 @@ export default class CategoryServiceImpl implements CategoryService {
         this.categoryMapper = categoryMapper;
     }
 
-    async getCategory(id: string): Promise<CategoryDto> {
-        try {
+    async getCategory(id: string, clearance: boolean): Promise<CategoryDto[] | string> {
+        if (clearance === true) {
             let category = await this.categoryRepository.getCategory(id);
-            return this.categoryMapper.convert(category);
-        } catch (err) {
-            throw err;
+            let result = []
+            for (var item of category) {
+                let value = this.categoryMapper.convert(item);
+                result.push(value);
+            }
+            return result;
+        } else {
+            return "unauthorized user";
         }
+
     }
 
-    async saveCategory(catogory: CategoryDto): Promise<string> {
-        let categoryInfo = this.categoryMapper.revert(catogory);
-        await this.categoryRepository.saveCategory(categoryInfo);
-        return "successfully saved";
+    async getCategoryList(): Promise<CategoryDto[] | string> {
+        let categories = await this.categoryRepository.getCategoryList();
+        let result = []
+        for (var category of categories) {
+            let value:any = this.categoryMapper.convert(category);
+            let count = 0;
+            for (var product of value.productCategory) {
+                count += 1;
+            }
+            value.count = count;
+            result.push(value)
+        }
+        return result;
+    }
+
+    async saveCategory(category: CategoryDto, clearance: boolean): Promise<object | string | undefined> {
+        let categoryInfo = this.categoryMapper.revert(category);
+        if (clearance === true) {
+            let newCategory = await this.categoryRepository.saveCategory(categoryInfo);
+            return newCategory;
+        } else {
+            return "unauthorized user";
+        }
     }
 
     async updateCategory(catogory: CategoryDto): Promise<string> {

@@ -12,6 +12,7 @@ export default class CartMapperImpl implements CartMapper {
         dto.quantity = entity.quantity;
         dto.user = entity.user;
         dto.product = entity.product;
+        dto.optionKeyword = entity.optionKeyword;
 
         return dto;
     }
@@ -23,6 +24,7 @@ export default class CartMapperImpl implements CartMapper {
         entity.quantity = dto.quantity;
         entity.user = dto.user;
         entity.product = dto.product;
+        entity.optionKeyword = dto.optionKeyword;
         
         return entity;
     }

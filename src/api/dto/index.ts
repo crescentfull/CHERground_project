@@ -3,6 +3,7 @@ import { Category } from "src/data/entity/category";
 import { Image } from "src/data/entity/image";
 import { Keyword } from "src/data/entity/keyword";
 import { Options } from "src/data/entity/options";
+import { ProductCategory } from "src/data/entity/productCategory";
 import { Product } from "../../data/entity/product";
 import { Status } from "../../data/entity/status";
 import { User } from "../../data/entity/user";
@@ -11,6 +12,7 @@ export class UserDto {
     id: number;
     email: string;
     password: string;
+    clearance?: boolean;
 }
 
 export class ProductDto {
@@ -22,7 +24,7 @@ export class ProductDto {
     quantity?: number;
     status?: Status[];
     image?: Image[];
-    category?: Category[];
+    productCategory?: ProductCategory[];
     cart?: Cart[];
     options?: Options[];
 }
@@ -36,7 +38,13 @@ export class ImageDto {
 export class CategoryDto {
     id: number;
     name: string;
+    productCategory?: ProductCategory[];
+}
+
+export class ProductCategoryDto {
+    id: number;
     product: Product[];
+    category: Category[];
 }
 
 export class StatusDto {
@@ -48,8 +56,9 @@ export class StatusDto {
 export class CartDto {
     id: number;
     quantity: number;
-    user: User[];
+    user: User;
     product: Product[];
+    optionKeyword?: string;
 }
 
 export class OptionsDto {

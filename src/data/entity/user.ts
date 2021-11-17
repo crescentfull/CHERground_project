@@ -15,7 +15,7 @@ export class User {
     password: string;
 
     @Column({ type: 'boolean', default: false})
-    clearance: boolean;
+    clearance?: boolean;
 
     @OneToMany(() => Cart, cart => cart.user)
     cart: Cart[];

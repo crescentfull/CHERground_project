@@ -16,7 +16,7 @@ export default class ProductMapperImpl implements ProductMapper {
         dto.quantity = entity.quantity;
         dto.status = entity.status;
         dto.image = entity.image;
-        dto.category = entity.category;
+        dto.productCategory = entity.productCategory;
         dto.cart = entity.cart;
         dto.options = entity.options;
 
@@ -34,7 +34,7 @@ export default class ProductMapperImpl implements ProductMapper {
         entity.quantity = dto.quantity;
         entity.status = dto.status;
         entity.image = dto.image;
-        entity.category  = dto.category;
+        entity.productCategory  = dto.productCategory;
         entity.cart = dto.cart;
         entity.options = dto.options;
         

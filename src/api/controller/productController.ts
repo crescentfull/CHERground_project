@@ -4,6 +4,7 @@ import container from "../../injector";
 
 import { ProductDto } from "../dto";
 import { ProductService } from "src/service";
+import { auth } from "../../middleware/index"
 
 class ProductController {
     public router = express.Router();
@@ -43,9 +44,11 @@ class ProductController {
             });
         })
 
-        this.router.post('', (req: express.Request, res: express.Response, next: express.NextFunction) => {
+        this.router.post('', auth, (req: express.Request, res: express.Response, next: express.NextFunction) => {
             let product: ProductDto = req.body;
-            this.productService.saveProduct(product)
+            const userInfo:any = req.decoded;
+            const userClearance = userInfo.clearance;
+            this.productService.saveProduct(product, userClearance)
             .then(resolve => {
                 res.status(200).send(JSON.stringify(resolve));
             }).catch(err => {

@@ -4,11 +4,13 @@ import { Image } from '../entity/image';
 import { Keyword } from '../entity/keyword';
 import { Options } from '../entity/options';
 import { Product } from '../entity/product';
+import { ProductCategory } from '../entity/productCategory';
 import { Status } from '../entity/status';
 import { User } from '../entity/user';
 
 export interface UserRepository {
     findById(id: string): Promise<User>;
+    getUser(use: User): Promise<User | undefined>;
     save(user: User): Promise<User>;
 }
 
@@ -22,10 +24,12 @@ export interface ProductRepository {
 }
 
 export interface CartRepository {
-    getCart(id: string): Promise<Cart>
-    saveCart(image: Cart): Promise<void>
-    updateCart(image: Cart): Promise<void>
-    deleteCart(id: string): Promise<void>
+    getUserCartDetail(id: string, userId: string): Promise<Cart>;
+    getUserCart(userId: string): Promise<Cart[]>;
+    saveCart(image: Cart, userId: User): Promise<void>;
+    updateCart(quantity: Cart): Promise<void>;
+    deleteCart(id: string): Promise<void>;
+    deleteOneCart(cartId: string): Promise<void>;
 }
 
 export interface ImageRepository {
@@ -36,10 +40,18 @@ export interface ImageRepository {
 }
 
 export interface CategoryRepository {
-    getCategory(id: string): Promise<Category>;
-    saveCategory(category: Category): Promise<void>;
+    getCategory(id: string): Promise<Category[]>;
+    getCategoryList(): Promise<Category[]>;
+    saveCategory(category: Category): Promise<Category | undefined>;
     updateCategory(category: Category): Promise<void>;
-    deleteCategory(id: string): Promise<void>; 
+    deleteCategory(id: string): Promise<void>;
+}
+
+export interface ProductCategoryRepository {
+    getProductCategory(id: string): Promise<ProductCategory>;
+    saveProductCategory(category: ProductCategory): Promise<void>;
+    updateProductCategory(category: ProductCategory): Promise<void>;
+    deleteProductCategory(id: string): Promise<void>; 
 }
 
 export interface OptionsRepository {

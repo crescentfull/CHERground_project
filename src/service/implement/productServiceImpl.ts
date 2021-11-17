@@ -55,13 +55,13 @@ export default class ProductServiceImpl implements ProductService {
         }
     }
 
-    async saveProduct(product: ProductDto): Promise<string> {
-        try {
+    async saveProduct(product: ProductDto, clearance: boolean): Promise<string | undefined> {
+        if (clearance == true) {
             let productInfo = this.productMapper.revert(product);
             await this.productRepository.saveProduct(productInfo)
             return "successfully saved";
-        } catch (err) {
-            throw err;
+        } else {
+            "unauthorized user";
         }
     }
 
