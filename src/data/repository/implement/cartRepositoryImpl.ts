@@ -17,6 +17,16 @@ export default class CartRepositoryImpl implements CartRepository {
         }
     }
 
+    async getUserCart(id: string): Promise<Cart[]> {
+        const cartRepo = (await connection).getRepository(Cart);
+        let userCart = await cartRepo.find({where: {user:Number(id)}});
+        if(userCart) {
+            return userCart;
+        } else {
+            throw CartError.UNEXISTING_CART;
+        }
+    }
+
     async saveCart(cart: Cart): Promise<void> {
         const cartRepo = (await connection).getRepository(Cart);
         cartRepo.save(cart)

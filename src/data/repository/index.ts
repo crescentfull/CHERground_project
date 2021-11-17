@@ -9,6 +9,7 @@ import { User } from '../entity/user';
 
 export interface UserRepository {
     findById(id: string): Promise<User>;
+    getUser(use: User): Promise<User | undefined>;
     save(user: User): Promise<User>;
 }
 
@@ -22,10 +23,11 @@ export interface ProductRepository {
 }
 
 export interface CartRepository {
-    getCart(id: string): Promise<Cart>
-    saveCart(image: Cart): Promise<void>
-    updateCart(image: Cart): Promise<void>
-    deleteCart(id: string): Promise<void>
+    getCart(id: string): Promise<Cart>;
+    getUserCart(id: string): Promise<Cart[]>;
+    saveCart(image: Cart): Promise<void>;
+    updateCart(image: Cart): Promise<void>;
+    deleteCart(id: string): Promise<void>;
 }
 
 export interface ImageRepository {

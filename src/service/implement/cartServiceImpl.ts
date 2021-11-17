@@ -26,6 +26,20 @@ export default class CartServiceImpl implements CartService {
         }
     }
 
+    async getUserCart(user: string): Promise<CartDto[]> {
+        try {
+            let carts = await this.cartRepository.getUserCart(user);
+            let result = [];
+            for (var cart of carts) {
+                let value = this.cartMapper.convert(cart);
+                result.push(value);
+            }
+            return result;
+        } catch (err) {
+            throw err;
+        }
+    }
+
     async saveCart(cart: CartDto): Promise<string> {
         let cartInfo = this.cartMapper.revert(cart);
         await this.cartRepository.saveCart(cartInfo)

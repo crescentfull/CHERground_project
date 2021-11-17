@@ -1,9 +1,10 @@
 import * as express from "express";
-
 import { inject } from "inversify";
 import container from "../../injector";
 import { CartService } from "src/service";
 import { CartDto } from "../dto";
+
+import { auth } from "../../middleware/index"
 
 class CartController {
     public router = express.Router();
@@ -13,7 +14,7 @@ class CartController {
         @inject("CartService") cartService: CartService
     ) {
         this.cartService = cartService;
-        this.router.get('/:id', (req: express.Request, res: express.Response, next: express.NextFunction) => {
+        this.router.get('/:id', auth, (req: express.Request, res: express.Response, next: express.NextFunction) => {
             this.cartService.getCart(req.params.id)
             .then(cart => {
                 res.status(200).send(cart);
@@ -22,7 +23,18 @@ class CartController {
             });
         })
 
-        this.router.post('', (req: express.Request, res: express.Response, next: express.NextFunction) => {
+        this.router.get('', auth, (req: express.Request, res: express.Response, next: express.NextFunction) => {
+            const userInfo:any = req.decoded;
+            const userId = userInfo.id;
+            this.cartService.getUserCart(userId)
+            .then(cart => {
+                res.status(200).send(cart);
+            }).catch(err => {
+                next(err);
+            });
+        })
+
+        this.router.post('', auth, (req: express.Request, res: express.Response, next: express.NextFunction) => {
             let cart: CartDto = req.body;
             this.cartService.saveCart(cart)
             .then(resolve => {
@@ -32,7 +44,7 @@ class CartController {
             })
         })
 
-        this.router.patch('', (req: express.Request, res: express.Response, next: express.NextFunction) => {
+        this.router.patch('', auth, (req: express.Request, res: express.Response, next: express.NextFunction) => {
             let cart: CartDto = req.body;
             this.cartService.updateCart(cart)
             .then(resolve => {
@@ -42,7 +54,7 @@ class CartController {
             })
         })
 
-        this.router.delete('/:id', (req: express.Request, res: express.Response, next: express.NextFunction) => {
+        this.router.delete('/:id', auth, (req: express.Request, res: express.Response, next: express.NextFunction) => {
             this.cartService.deleteCart(req.params.id)
             .then(resolve => {
                 res.status(200).send(JSON.stringify(resolve));

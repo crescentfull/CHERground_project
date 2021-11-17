@@ -2,6 +2,7 @@ import { ProductDto, ImageDto, UserDto, CategoryDto, OptionsDto, KeywordDto, Sta
 
 export interface UserService {
     getUserById(id: string): Promise<UserDto>;
+    getUser(user: UserDto): Promise<object | undefined>;
     saveUser(user: UserDto): Promise<UserDto>;
 }
 
@@ -23,6 +24,7 @@ export interface ImageService {
 
 export interface CartService {
     getCart(id: string): Promise<CartDto>;
+    getUserCart(user: string): Promise<CartDto[]>;
     saveCart(cart: CartDto): Promise<string>;
     updateCart(cart: CartDto): Promise<string>;
     deleteCart(id: string): Promise<string>;   
