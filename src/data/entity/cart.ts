@@ -8,11 +8,14 @@ export class Cart {
     id: number;
 
     @ManyToOne(() => User, user => user.cart)
-    user: User[];
+    user: User;
 
     @ManyToOne(() => Product, product => product.cart)
     product: Product[];
 
     @Column()
     quantity: number;
+
+    @Column()
+    optionKeyword?: string;
 }

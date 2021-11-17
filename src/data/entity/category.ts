@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, ManyToMany, OneToMany } from 'typeorm';
-import { Product } from './product';
+import { ProductCategory } from './productCategory';
 
 @Entity()
 export class Category {
@@ -9,6 +9,6 @@ export class Category {
     @Column()
     name: string;
 
-    @ManyToOne(() => Product, product => product.category, {onDelete: 'CASCADE'})
-    product: Product[];
+    @OneToMany(() => ProductCategory, productCategory => productCategory.category)
+    productCategory?: ProductCategory[];
 }

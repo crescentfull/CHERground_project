@@ -28,6 +28,9 @@ import KeywordRepositoryImpl from "./data/repository/implement/keywordRepository
 import StatusServiceImpl from "./service/implement/statusServiceImpl";
 import StatusMapperImpl from "./data/mapper/implement/statusMapperImpl";
 import StatusRepositoryImpl from "./data/repository/implement/statusRepositoryImpl";
+import ProductCategoryServiceImpl from "./service/implement/productCategoryServiceImpl";
+import ProductCategoryMapperImpl from "./data/mapper/implement/productCategoryMapperImpl";
+import ProductCategoryRepositoryImpl from "./data/repository/implement/productCategoryRepositoryImpl";
 
 
 const container: Container = new Container();
@@ -40,6 +43,7 @@ container.bind<Service.CategoryService>("CategoryService").to(CategoryServiceImp
 container.bind<Service.OptionsService>("OptionsService").to(OptionsServiceImpl);
 container.bind<Service.KeywordService>("KeywordService").to(KeywordServiceImpl);
 container.bind<Service.StatusService>("StatusService").to(StatusServiceImpl);
+container.bind<Service.ProductCategoryService>("ProductCategoryService").to(ProductCategoryServiceImpl);
 
 container.bind<ModelMapper.UserMapper>("UserMapper").to(UserMapperImpl);
 container.bind<ModelMapper.ProductMapper>("ProductMapper").to(ProductMapperImpl);
@@ -49,6 +53,7 @@ container.bind<ModelMapper.CategoryMapper>("CategoryMapper").to(CategoryMapperIm
 container.bind<ModelMapper.OptionsMapper>("OptionsMapper").to(OptionsMapperImpl);
 container.bind<ModelMapper.KeywordMapper>("KeywordMapper").to(KeywordMapperImpl);
 container.bind<ModelMapper.StatusMapper>("StatusMapper").to(StatusMapperImpl);
+container.bind<ModelMapper.ProductCategoryMapper>("ProductCategoryMapper").to(ProductCategoryMapperImpl);
 
 container.bind<Repository.UserRepository>("UserRepository").to(UserRepositoryImpl);
 container.bind<Repository.ProductRepository>("ProductRepository").to(ProductRepositoryImpl);
@@ -58,5 +63,6 @@ container.bind<Repository.CategoryRepository>("CategoryRepository").to(CategoryR
 container.bind<Repository.OptionsRepository>("OptionsRepository").to(OptionsRepositoryImpl);
 container.bind<Repository.KeywordRepository>("KeywordRepository").to(KeywordRepositoryImpl);
 container.bind<Repository.StatusRepository>("StatusRepository").to(StatusRepositoryImpl);
+container.bind<Repository.ProductCategoryRepository>("ProductCategoryRepository").to(ProductCategoryRepositoryImpl);
 
 export default container;

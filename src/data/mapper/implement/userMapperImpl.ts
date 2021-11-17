@@ -11,6 +11,7 @@ export default class UserMapperImpl implements UserMapper {
         dto.id = entity.id;
         dto.email = entity.email;
         dto.password = entity.password;
+        dto.clearance = entity.clearance;
 
         return dto;
     }
@@ -21,6 +22,7 @@ export default class UserMapperImpl implements UserMapper {
         entity.id = dto.id;
         entity.email = dto.email;
         entity.password = dto.password;
+        entity.clearance = dto.clearance;
 
         return entity;
     }

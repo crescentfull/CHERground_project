@@ -3,12 +3,24 @@ import { connection } from "../../connection/connection";
 import { CartRepository } from "..";
 import { Cart } from "../../entity/cart";
 import { CartError } from "../../../service/error/error";
+import { User } from "src/data/entity/user";
 
 @injectable()
 export default class CartRepositoryImpl implements CartRepository {
-    async getCart(id: string): Promise<Cart> {
+    async getUserCartDetail(id: string, userId: string): Promise<Cart> {
         const cartRepo = (await connection).getRepository(Cart);
-        let cart = await cartRepo.findOne({where: {id:id}});
+        let cart = await cartRepo.findOne({
+            where: {
+                id:Number(id), user:Number(userId)
+            },
+            join: {
+                alias: "cart",
+                leftJoinAndSelect: {
+                    product: "cart.product",
+                    image: "product.image"
+                }
+            }
+        });
         
         if(cart) {
             return cart;
@@ -17,18 +29,59 @@ export default class CartRepositoryImpl implements CartRepository {
         }
     }
 
-    async saveCart(cart: Cart): Promise<void> {
+    async getUserCart(userId: string): Promise<Cart[]> {
         const cartRepo = (await connection).getRepository(Cart);
+        let userCart = await cartRepo.find({
+            where: {
+                user:Number(userId)
+            },
+            join: {
+                alias: "cart",
+                leftJoinAndSelect: {
+                    product: "cart.product",
+                    image: "product.image"
+                }
+            }
+        });
+        if(userCart) {
+            return userCart;
+        } else {
+            throw CartError.UNEXISTING_CART;
+        }
+    }
+
+    async saveCart(cart: Cart, userId: User): Promise<void> {
+        const cartRepo = (await connection).getRepository(Cart);
+        cart.user = userId;
         cartRepo.save(cart)
     }
 
-    async updateCart(cart: Cart): Promise<void> {
+    async updateCart(quantity: Cart): Promise<void> {
         const cartRepo = (await connection).getRepository(Cart);
-        cartRepo.save(cart)
+        cartRepo.save(quantity);
     }
 
     async deleteCart(id: string): Promise<void> {
         const cartRepo = (await connection).getRepository(Cart);
-        cartRepo.delete(id);
+        let cartIds = []
+        let userCarts = await cartRepo.find({
+            where: {
+                user:Number(id)
+            }
+        });
+        
+        if (userCarts === []) {
+            throw CartError.UNEXISTING_CART;
+        } else {
+            for (var cart of userCarts) {
+                cartIds.push(cart.id);
+            }
+            cartRepo.delete(cartIds);
+        }
+    }
+
+    async deleteOneCart(cartId: string): Promise<void> {
+        const cartRepo = (await connection).getRepository(Cart);
+        cartRepo.delete(cartId);
     }
 }
