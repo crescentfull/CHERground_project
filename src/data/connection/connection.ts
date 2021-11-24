@@ -9,6 +9,7 @@ import { Keyword } from '../entity/keyword';
 import { Options } from '../entity/options'
 
 import 'reflect-metadata';
+import { ProductCategory } from '../entity/productCategory';
 require('dotenv').config()
 
 export const connection: Promise<Connection> = createConnection({
@@ -18,7 +19,7 @@ export const connection: Promise<Connection> = createConnection({
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: "cherground",
-    entities: [User, Category, Product, Status, Image, Cart, Options, Keyword],
+    entities: [User, Category, Product, Status, Image, Cart, Options, Keyword, ProductCategory],
     logging: true,
     synchronize: true
 })

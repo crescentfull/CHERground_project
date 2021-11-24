@@ -4,6 +4,8 @@ import { ProductService } from "..";
 import { ProductDto } from "src/api/dto";
 import { ProductMapper } from "src/data/mapper/modelMapper";
 import { ProductRepository } from "src/data/repository";
+import { Image } from "src/data/entity/image";
+import { Category } from "src/data/entity/category";
 
 @injectable()
 export default class ProductServiceImpl implements ProductService {
@@ -55,13 +57,15 @@ export default class ProductServiceImpl implements ProductService {
         }
     }
 
-    async saveProduct(product: ProductDto): Promise<string> {
-        try {
-            let productInfo = this.productMapper.revert(product);
-            await this.productRepository.saveProduct(productInfo)
-            return "successfully saved";
-        } catch (err) {
-            throw err;
+    async saveProduct(product: {"product": ProductDto, "category": Category[], "images": string[]}, clearance: boolean): Promise<string | undefined> {
+        let categoryIds = product.category;
+        let imageUrls = product.images;
+        let newProduct = this.productMapper.revert(product.product);
+        if (clearance === true) {
+            await this.productRepository.saveProduct(newProduct, categoryIds, imageUrls);
+            return "product saved";
+        } else {
+            "unauthorized user";
         }
     }
 

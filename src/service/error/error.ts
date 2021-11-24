@@ -20,6 +20,15 @@ export class CustomError extends Error {
         this.message = message;
     }
 }
+
+export class KeyError {
+    static KEY_ERROR = new CustomError(400, ErrorType.TYPE_SYSTEM, "KEY_ERROR")
+}
+
+export class InputError {
+    static INPUT_ERROR = new CustomError(400, ErrorType.TYPE_PRODUCT, "INPUT_ERROR")
+}
+
 export class UserError {
     static UNEXISTING_USER = new CustomError(404, ErrorType.TYPE_USER, "USER_DOSEN'T_EXIST")
 }

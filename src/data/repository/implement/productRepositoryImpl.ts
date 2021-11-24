@@ -1,10 +1,13 @@
 import { injectable } from "inversify";
 import { ProductRepository } from "..";
 import { connection } from "../../connection/connection";
-import { ProductError } from "../../../service/error/error";
+import { InputError, ProductError } from "../../../service/error/error";
 
 import { Product } from "../../entity/product";
 import { Like } from "typeorm";
+import { ProductCategory } from "../../entity/productCategory";
+import { Image } from "../../entity/image";
+import { Category } from "../../entity/category";
 
 @injectable()
 export default class ProductRepositoryImpl implements ProductRepository {
@@ -16,7 +19,12 @@ export default class ProductRepositoryImpl implements ProductRepository {
             join: {
                 alias: "product",
                 leftJoinAndSelect: {
-                    image: "product.image"
+                    image: "product.image",
+                    productCategory: "product.productCategory",
+                    category: "productCategory.category",
+                    options: "product.options",
+                    keyword: "options.keyword",
+                    status: "product.status"
                 }
             }
         });
@@ -35,7 +43,8 @@ export default class ProductRepositoryImpl implements ProductRepository {
                 alias: "product",
                 leftJoinAndSelect: {
                     image: "product.image",
-                    category: "product.category",
+                    productCategory: "product.productCategory",
+                    category: "productCategory.category",
                     options: "product.options",
                     keyword: "options.keyword",
                     status: "product.status"
@@ -72,9 +81,22 @@ export default class ProductRepositoryImpl implements ProductRepository {
         }
     }
 
-    async saveProduct(product: Product): Promise<void> {
+    async saveProduct(product: Product, category: Category[], images: string[]): Promise<void> {
         const productRepo = (await connection).getRepository(Product);
-        productRepo.save(product);
+        await productRepo.save(product);
+        let productId:any = await productRepo.findOne({where: {name: product.name}});
+
+        const productCategoryRepo = (await connection).getRepository(ProductCategory);
+        
+        for (var categoryId of category) {
+            await productCategoryRepo.save({"category": categoryId, "product": productId.id})
+        }
+
+        const imageRepo = (await connection).getRepository(Image);
+
+        for (var image of images) {
+            await imageRepo.save({"imageUrl": image, "product": productId.id});
+        }
     }
 
     async updateProduct(product: Product): Promise<void> {

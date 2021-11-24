@@ -6,7 +6,6 @@ import container from '../../injector';
 import { UserDto } from '../dto';
 import { UserService } from 'src/service';
 
-
 class UserController {
     public router = express.Router();
     private userService: UserService;
@@ -22,23 +21,29 @@ class UserController {
                 res.status(200).send(user);
             }).catch(err => {
                 next(err);
+            }); 
+        });
+
+        this.router.post('/login', (req: express.Request, res: express.Response, next) => {
+            let loginInfo: UserDto = req.body;
+
+            this.userService.getUser(loginInfo)
+            .then(user => {
+                res.status(200).send(user);
+            }).catch(err => {
+                next(err);
             });
-        })
+        });
 
-        this.router.post('', (req: express.Request, res: express.Response, next) => {
+        this.router.post('/register', async (req: express.Request, res: express.Response, next) => {
             let user: UserDto = req.body;
-
             this.userService.saveUser(user)
             .then(user => {
                 res.status(200).send(user);
             }).catch(err => {
                 next(err);
             });
-        })
-
-        this.router.get('', (req: express.Request, res: express.Response, next) => {
-            res.status(200).send("");
-        })
+        });
     }
 }
 
