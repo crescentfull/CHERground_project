@@ -1,39 +1,33 @@
-![header](https://capsule-render.vercel.app/api?type=Slice&color=auto&height=350&section=header&text=%20%208PERCENT&fontSize=90&textBg=true)
+![header](https://capsule-render.vercel.app/api?type=Slice&color=auto&height=350&section=header&text=%20%20CHERground&fontSize=90&textBg=true)
 
 <br/>
-<br>
+<br/>
 
 
-# 원티드x위코드 백엔드 프리온보딩 과제 4.
+# CHERground x  Wanted POS 서비스 앱 
 
-<br>
+<br/>
 
-> ## [Assignment] 과제 제출 기업정보
+> ## [Assignment] 기업정보
 
- <br>
+ <br/>
 
-  - 기업명 : 8PERCENT
+  - 기업명 : CHERground
 
-  - [8percent 웹사이트 링크](https://8percent.kr/)
+  - [CHERground 웹사이트 링크](https://www.cherground.com/)
 
-  - [원티드 채용공고 링크](https://www.wanted.co.kr/wd/64695)
-
-<br>
-<br>
-<br>
+<br/>
+<br/>
+<br/>
 
 > ## Members
 
-<br>
+<br/>
 
 |이름   |Github                   |담당 기능|
 |-------|-------------------------|--------------------|
-|👨🏻‍🎤 김주현 |[kjhabc2002](https://github.com/kjhabc2002) | DB data control, DB load test, AWS / Docker 배포 |
-|👰🏻‍♂️ 이다빈 |[thisisempty](https://github.com/thisisempty)     | DB data control, DB load test, AWS / Docker 배포 |
-|👶🏻 구본욱 |[qhsdnr0](https://github.com/qhsdnr0)   | DB data control, DB load test, AWS / Docker 배포 |
-|🥷 김지훈  |[kimfa123](https://github.com/kimfa123) | 입금/출금 view, unit test, README 작성|
-|🦹🏻‍♂️ 문승준 |[palza4dev](https://github.com/palza4dev)     | 거래내역 view, unit test, postman api, README 작성 |
-|👨🏻‍🦳 양가현 |[chrisyang256](https://github.com/chrisyang256)   | 회원가입/로그인 view, unit test, README 작성 |
+|👨🏻‍🎤 송영록 |[kjhabc2002](https://github.com/kjhabc2002) | DB data control, DB load test, AWS / Docker 배포 |
+|👰🏻‍♂️ 김도훈 |[thisisempty](https://github.com/thisisempty)     | DB data control, DB load test, AWS / Docker 배포 |
 
 ㅤ👪 공동작업: DB Modeling
 
@@ -370,61 +364,7 @@ class Transaction(models.Model):
 
 ```bash
 
-├── __pycache__
-├── accounts
-│   ├── __init__.py
-│   ├── __pycache__
-│   ├── admin.py
-│   ├── apps.py
-│   ├── migrations
-│   │   ├── 0001_initial.py
-│   │   ├── __init__.py
-│   │   └── __pycache__
-│   ├── models.py
-│   ├── tests.py
-│   ├── urls.py
-│   ├── utils.py
-│   └── views.py
-├── core
-│   ├── __init__.py
-│   ├── __pycache__
-│   ├── admin.py
-│   ├── apps.py
-│   ├── migrations
-│   │   ├── __init__.py
-│   │   └── __pycache__
-│   ├── models.py
-│   ├── tests.py
-│   └── views.py
-├── db.sqlite3
-├── dbuploader.py
-├── deploy.Dockerfile
-├── docker-compose-deploy.yml
-├── docker-compose.yml
-├── eightpercent
-│   ├── __init__.py
-│   ├── __pycache__
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-├── local.Dockerfile
-├── manage.py
-├── pull_request_template.md
-├── requirements.txt
-└── transactions
-    ├── __init__.py
-    ├── __pycache__
-    ├── admin.py
-    ├── apps.py
-    ├── migrations
-    │   ├── 0001_initial.py
-    │   ├── __init__.py
-    │   └── __pycache__
-    ├── models.py
-    ├── tests.py
-    ├── urls.py
-    └── views.py
+
 ```
 
 <br/>
@@ -432,5 +372,5 @@ class Transaction(models.Model):
 <br/>
 
 # Reference
-이 프로젝트는 원티드x위코드 백엔드 프리온보딩 과제 일환으로 8percent에서 출제한 과제를 기반으로 만들었습니다. 
+이 프로젝트는 CHERground 기업협업의 일환으로 제작된 코드입니다. 
     
