@@ -98,14 +98,7 @@
 
 <br>
 
-1. [Postman API 문서 링크](https://documenter.getpostman.com/view/17676214/UVC8BkkC)로  접속해 우측 상단의 `Run in Postman` 버튼을 클릭합니다.
-2. 개인 Workspace로 Import 합니다.
-
-3. hostname 환경변수를 deploy로 선택합니다.
-
-4. 배포 주소 `` 를 확인합니다.
-5. API 문서 예시를 참고해 Request를 보냅니다.
-
+1. [Postman API 문서 링크](https://cloudy-station-688596.postman.co/workspace/My-Workspace~e8ea5b0c-c034-4103-8b11-b76a8dd22f41/documentation/17713220-bd37e9f6-9a13-44e9-baaa-5c7b42ab267c)
 <br/>
 <br>
 <br>
