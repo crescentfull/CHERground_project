@@ -91,7 +91,7 @@
 <br>
 
 
-테스트 결과는 [Postman loadtest 문서 링크](https://documenter.getpostman.com/view/18218753/UVC2H9Er)에서 확인 가능합니다.
+테스트 결과는 [Postman loadtest 문서 링크](https://cloudy-station-688596.postman.co/workspace/My-Workspace~e8ea5b0c-c034-4103-8b11-b76a8dd22f41/documentation/17713220-bd37e9f6-9a13-44e9-baaa-5c7b42ab267c)에서 확인 가능합니다.
 
 
 > ## API Document & Test
