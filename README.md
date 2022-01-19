@@ -26,8 +26,8 @@
 
 |이름   |Github                   |담당 기능|
 |-------|-------------------------|--------------------|
-|👨🏻‍🎤 송영록 |[kjhabc2002](https://github.com/kjhabc2002) | DB data control, DB load test, AWS / Docker 배포 |
-|👰🏻‍♂️ 김도훈 |[thisisempty](https://github.com/thisisempty)     | DB data control, DB load test, AWS / Docker 배포 |
+|👨🏻‍🎤 송영록 |[crescentfull](https://github.com/crescentfull) | DB data control, 로그인, 장바구니 API  |
+|👰🏻‍♂️ 김도훈 |[cheesepuff90](https://github.com/cheesepuff90)     | DB data control, DB load test, 상품 API|
 
 ㅤ👪 공동작업: DB Modeling
 
