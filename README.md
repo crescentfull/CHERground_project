@@ -98,7 +98,7 @@
 
 <br>
 
-1. [Postman API 문서 링크](https://cloudy-station-688596.postman.co/workspace/My-Workspace~e8ea5b0c-c034-4103-8b11-b76a8dd22f41/documentation/17713220-bd37e9f6-9a13-44e9-baaa-5c7b42ab267c)
+1. [Postman API 문서 링크](https://documenter.getpostman.com/view/17713220/2s7ZE4LPuE)
 <br/>
 <br>
 <br>
