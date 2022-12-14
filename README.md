@@ -41,23 +41,9 @@
 
 <div align="center">
 
- [![My Skills](https://skillicons.dev/icons?i=ts,express,nodejs, nginx, vscode, mysql,git,github&perline=8)](https://skillicons.dev)
+ [![My Skills](https://skillicons.dev/icons?i=jts,express,nodejs,nginx,vscode,mysql,git,github)](https://skillicons.dev)
 
 </div>
-
-<br>
-<br>
-<br>
-
-> ## 과제 내용
-
-<br>
-
-ㅤ아래 요구사항에 맞춰 POS앱 Restfull API를 개발합니다.
-
-<br>
-
-
 
 
 <br/>
