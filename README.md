@@ -41,7 +41,7 @@
 
 <div align="center">
 
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)ㅤ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+ [![My Skills](https://skillicons.dev/icons?i=ts,express,nodejs, nginx, vscode, mysql,git,github&perline=8)](https://skillicons.dev)
 
 </div>
 
