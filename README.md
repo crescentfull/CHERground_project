@@ -4,7 +4,7 @@
 <br/>
 
 
-# CHERground x  Wanted POS 서비스 앱 
+# CHERground POS 서비스 앱 
 
 <br/>
 
