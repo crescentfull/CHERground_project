@@ -49,6 +49,7 @@ entity - data(API) - repository - usecase - view model - view 로 계층을 분�
 Entity에 User, Product, Category 등 객체의 속성들을 interface로 만들어 정의해두고, Entity를 import 하여 Promise 객체의 반환 타입이나 함수 인자 타입을 지정해주었습니다. <br/>
 계층마다 index.ts 파일에 class에서 사용할 함수와 타입들을 지정해둔 interface를 정의하고 각 class에 implement하여 사용함으로써, class를 일일히 보지 않고 index.ts 파일만 확인하면 어떤 함수들이 정의되어 있는지 알 수 있도록 하였습니다. <br/>
 
+<br/>
 
 📌 백엔드 설계 및 결제 API 개발 담당 <br/>
 
