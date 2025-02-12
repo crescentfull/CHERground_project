@@ -1,9 +1,3 @@
-![header](https://capsule-render.vercel.app/api?type=Slice&color=auto&height=350&section=header&text=%20%20CHERground&fontSize=90&textBg=true)
-
-<br/>
-<br/>
-
-
 # CHERground POS 서비스 앱 
 관리자가 상품 정보 및 카테고리를 추가하고, 상품을 장바구니에 담아 결제할 수 있는 Web POS 사이트 구현 프로젝트로, 회사 CHERGROUND에서 1개월 동안 인턴으로 일하면서 진행한 프로젝트다.
 
@@ -32,11 +26,6 @@
 
 ㅤ👪 공동작업: DB Modeling
 
-<br>
-<br>
-<br>
-
-
 > ## 사용 기술
 <br>
 
@@ -45,11 +34,6 @@
  [![My Skills](https://skillicons.dev/icons?i=jts,express,nodejs,nginx,vscode,mysql,git,github)](https://skillicons.dev)
 
 </div>
-
-
-<br/>
-<br/>
-<br/>
 
 > ## 모델링
 
@@ -61,21 +45,20 @@
 
 </div>
 
-<br/>
-<br/>
-<br>
-
-
 > ## 구현 기능
 
 <br>
+Clean Architecture를 프로젝트에 적용하기 위해 MVVM 디자인 패턴을 사용하였습니다.
+entity - data(API) - repository - usecase - view model - view 로 계층을 분리하여, 데이터 통신이 이루어지는 코드와 뷰를 작동시키는 코드를 분리하였습니다.
+Entity에 User, Product, Category 등 객체의 속성들을 interface로 만들어 정의해두고, Entity를 import 하여 Promise 객체의 반환 타입이나 함수 인자 타입을 지정해주었습니다.
+계층마다 index.ts 파일에 class에서 사용할 함수와 타입들을 지정해둔 interface를 정의하고 각 class에 implement하여 사용함으로써, class를 일일히 보지 않고 index.ts 파일만 확인하면 어떤 함수들이 정의되어 있는지 알 수 있도록 하였습니다.
 
-📌 백엔드 설계 및 결제 API 개발
+
+📌 백엔드 설계 및 결제 API 개발 담당
 
 MySQL 기반 데이터 모델링 및 장바구니 API 개발 <br>
 JWT 인증을 활용한 POS 시스템 로그인/회원 관리 기능 구현 <br>
 EC2 + RDS 기반 AWS 서버 배포 진행 <br>
-
 
 <br>
 <br>
