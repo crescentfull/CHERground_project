@@ -11,10 +11,6 @@
 
   - [CHERground 웹사이트 링크](https://www.cherground.com/)
 
-<br/>
-<br/>
-<br/>
-
 > ## Members
 
 <br/>
@@ -48,21 +44,17 @@
 > ## 구현 기능
 
 <br>
-Clean Architecture를 프로젝트에 적용하기 위해 MVVM 디자인 패턴을 사용하였습니다.
-entity - data(API) - repository - usecase - view model - view 로 계층을 분리하여, 데이터 통신이 이루어지는 코드와 뷰를 작동시키는 코드를 분리하였습니다.
-Entity에 User, Product, Category 등 객체의 속성들을 interface로 만들어 정의해두고, Entity를 import 하여 Promise 객체의 반환 타입이나 함수 인자 타입을 지정해주었습니다.
-계층마다 index.ts 파일에 class에서 사용할 함수와 타입들을 지정해둔 interface를 정의하고 각 class에 implement하여 사용함으로써, class를 일일히 보지 않고 index.ts 파일만 확인하면 어떤 함수들이 정의되어 있는지 알 수 있도록 하였습니다.
+Clean Architecture를 프로젝트에 적용하기 위해 MVVM 디자인 패턴을 사용하였습니다. <br/>
+entity - data(API) - repository - usecase - view model - view 로 계층을 분리하여, 데이터 통신이 이루어지는 코드와 뷰를 작동시키는 코드를 분리하였습니다. <br/>
+Entity에 User, Product, Category 등 객체의 속성들을 interface로 만들어 정의해두고, Entity를 import 하여 Promise 객체의 반환 타입이나 함수 인자 타입을 지정해주었습니다. <br/>
+계층마다 index.ts 파일에 class에서 사용할 함수와 타입들을 지정해둔 interface를 정의하고 각 class에 implement하여 사용함으로써, class를 일일히 보지 않고 index.ts 파일만 확인하면 어떤 함수들이 정의되어 있는지 알 수 있도록 하였습니다. <br/>
 
 
-📌 백엔드 설계 및 결제 API 개발 담당
+📌 백엔드 설계 및 결제 API 개발 담당 <br/>
 
 MySQL 기반 데이터 모델링 및 장바구니 API 개발 <br>
 JWT 인증을 활용한 POS 시스템 로그인/회원 관리 기능 구현 <br>
 EC2 + RDS 기반 AWS 서버 배포 진행 <br>
-
-<br>
-<br>
-<br>
 
 
 테스트 결과는 [Postman loadtest 문서 링크](https://cloudy-station-688596.postman.co/workspace/My-Workspace~e8ea5b0c-c034-4103-8b11-b76a8dd22f41/documentation/17713220-bd37e9f6-9a13-44e9-baaa-5c7b42ab267c)에서 확인 가능합니다.
@@ -70,12 +62,9 @@ EC2 + RDS 기반 AWS 서버 배포 진행 <br>
 
 > ## API Document & Test
 
-<br>
-
 1. [Postman API 문서 링크](https://documenter.getpostman.com/view/17713220/2s7ZE4LPuE)
+
 <br/>
-<br>
-<br>
 
 > ## 폴더 구조
 
@@ -153,10 +142,6 @@ EC2 + RDS 기반 AWS 서버 배포 진행 <br>
     │   └── userServiceImpl.ts
     └── index.ts
 ```
-
-<br/>
-<br/>
-<br/>
 
 # Reference
 이 프로젝트는 CHERground 기업협업의 일환으로 제작된 코드입니다. 
